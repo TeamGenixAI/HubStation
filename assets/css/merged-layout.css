@@ -1,0 +1,387 @@
+/* ── 세로 스크롤만, 가로 스크롤 없음 ─────────────── */
+html,
+body {
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* body.h-100 → Bootstrap !important 우선순위 대응 */
+body.h-100 {
+    height: auto !important;
+}
+
+/* ── 래퍼 고정 높이 해제 ────────────────────────── */
+body>div,
+body>div>div {
+    height: auto !important;
+}
+
+/* ── 탭 콘텐츠/패널 크기 자동화 ─────────────────── */
+.tab-content,
+.tab-pane {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* ── 컨테이너: 마진 overflow 방지 + 최대 폭 제한 ── */
+.tab-pane>.container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+/* ── d-xxl-flex → 모든 화면에서 flex 유지 ────────── */
+.d-xxl-flex {
+    display: flex !important;
+}
+
+/* ── 탭 네비게이션: 한 줄 유지 + 좌우 스크롤 표시 ─ */
+.nav-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+}
+
+/* 탭 이름 잘림 방지 */
+.nav-tabs .nav-link {
+    white-space: nowrap;
+}
+
+/* ── number input 폭: 2자리 원칙, CO2 예외 ──────────────── */
+.tab-pane input[type="number"] {
+    width: 4rem !important;
+}
+
+/* CO2 설정치: 4자리 */
+#P244 {
+    width: 6rem !important;
+}
+
+/* CO2 편차: 3자리 */
+#P245 {
+    width: 5rem !important;
+}
+
+/* CO2 설정치2: 4자리 */
+#P246 {
+    width: 6rem !important;
+}
+
+/* CO2 편차2: 3자리 */
+#P247 {
+    width: 5rem !important;
+}
+
+/* EC/pH: 소수 1자리 (9.9 형식) */
+.tab-pane input[type="number"][step="0.1"] {
+    width: 5rem !important;
+}
+
+/* ── 전체 탭(PC/패드): 화면 거의 전체 높이 사용 → justify-content-between 작동 ── */
+@media (min-width: 769px) {
+    .tab-pane>.container.d-flex {
+        min-height: calc(100vh - 80px);
+    }
+}
+
+/* ── 구역 탭 EC/pH 행: PC/pad에서 전체 폭 사용 → space-between 작동 ── */
+@media (min-width: 769px) {
+    .tagBoxDisplay.flex-column > .d-inline-flex.flex-row {
+        width: 100%;
+    }
+}
+
+/* ── 769px~991px: row 간격 보강 ────────────────────── */
+@media (min-width: 769px) and (max-width: 991.98px) {
+    .tab-pane>.container.d-flex {
+        row-gap: 2.5rem !important;
+    }
+
+    .tab-pane .d-flex.flex-row {
+        row-gap: 2rem;
+    }
+}
+
+/* ── lg 이상(≥992px): row 간격 + 좌우 여백 ────────── */
+@media (min-width: 992px) {
+    .tab-pane>.container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .tab-pane>.container.d-flex {
+        row-gap: 1.5rem !important;
+    }
+
+    .tab-pane .d-flex.flex-row {
+        row-gap: 1.2rem;
+    }
+}
+
+/* ── xl 이상(≥1200px): row 간격 + 좌우 여백 더 넓게 ─ */
+@media (min-width: 1200px) {
+    .tab-pane>.container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .tab-pane>.container.d-flex {
+        row-gap: 2rem !important;
+    }
+
+    .tab-pane .d-flex.flex-row {
+        row-gap: 1.5rem;
+    }
+}
+
+/* ── xxl 이상(≥1400px): row 간격 + 좌우 여백 최대 ──── */
+@media (min-width: 1400px) {
+    .tab-pane>.container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .tab-pane>.container.d-flex {
+        row-gap: 2.5rem !important;
+    }
+
+    .tab-pane .d-flex.flex-row {
+        row-gap: 2rem;
+    }
+}
+
+/* ── 좁은 화면 반응형 재배치 ─────────────────────── */
+@media (max-width: 768px) {
+
+    /* number input 폰트 확대 + 스피너 제거 (Chrome ▲▼ 화살표가 폭 차지) */
+    .tab-pane input[type="number"] {
+        font-size: 1.5rem !important;
+        -moz-appearance: textfield !important;
+    }
+
+    .tab-pane input[type="number"]::-webkit-outer-spin-button,
+    .tab-pane input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0 !important;
+    }
+
+    /* ① 섹션 컨테이너(컬럼 flex): 섹션 간 충분한 세로 간격   */
+    .tab-pane>.container.d-flex {
+        row-gap: 2.5rem !important;
+    }
+
+    /* ② 섹션 컨테이너 직접 자식: 기존 상하 margin 초기화     */
+    .tab-pane>.container>* {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ③④ 모든 flex-row: 카드 배치·카드 내부 컨텐츠 모두
+           justify-content: space-between 으로 통일           */
+    .tab-pane .d-flex.flex-row {
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        row-gap: 2rem;
+        column-gap: 1rem;
+    }
+
+    /* ⑤ flex-row 직접 자식: 기존 상하 margin 초기화          */
+    .tab-pane .d-flex.flex-row>* {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ⑥ d-inline-flex: 줄바꿈 허용 (입력값 그룹)             */
+    .tab-pane .d-inline-flex {
+        flex-wrap: wrap !important;
+        row-gap: 0.3rem;
+        column-gap: 0.5rem;
+    }
+
+    /* ⑦ tagBoxDisplay: 폭 제한 + 상하 패딩 충분히            */
+    .tagBoxDisplay {
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1rem !important;
+    }
+}
+
+/* ── iPad mini 이하(≤768px): row당 카드 1개 ─────── */
+@media (max-width: 768px) {
+
+    /* 카드 1개씩 (카드행 직계 자식 전체 폭) */
+    .tab-pane .d-flex.flex-row>* {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* ribbon: position:absolute 이므로 width auto 강제 유지
+       specificity (0,4,0) > .tab-pane .d-flex.flex-row > * (0,3,0) */
+    .tab-pane .d-flex.flex-row>.ribbon {
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    /* 카드 내부 flex-row 자식: 자연폭 유지 (선택+시간 등 한 줄 유지) */
+    .tagBoxDisplay .d-flex.flex-row>* {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    /* 카드: 폭 100% + 왼쪽 정렬 (flex-direction은 HTML 클래스 유지) */
+    .tagBoxDisplay {
+        max-width: 100% !important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        align-items: flex-start !important;
+    }
+
+    /* 카드 내부 행 간격 */
+    .tagBoxDisplay>*+* {
+        margin-top: 0.8rem;
+    }
+
+    /* ② 체크박스: 왼쪽 정렬 강화 */
+    .tagBoxDisplay:has(input[type="checkbox"]) {
+        align-items: flex-start !important;
+    }
+
+    .tagBoxDisplay:has(input[type="checkbox"])>* {
+        align-self: flex-start !important;
+    }
+
+    /* form-check 자체: 자연폭 + 왼쪽 정렬
+       (인라인 justify-content: space-evenly 무력화) */
+    .tagBoxDisplay .form-check:has(input[type="checkbox"]) {
+        justify-content: flex-start !important;
+        text-align: left !important;
+        width: auto !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+    }
+
+    /* form-check 직접 부모 div의 가운데 정렬 무력화
+       (justify-content-center, text-center 대응) */
+    .tagBoxDisplay div:has(> .form-check input[type="checkbox"]) {
+        justify-content: flex-start !important;
+        text-align: left !important;
+    }
+
+    /* 구동기 유동팬/CO2: gap-2 내 각 아이템 독립 1줄 (선택·편차 각각 줄바꿈) */
+    .tagBoxDisplay .d-inline-flex.gap-2 > .d-inline-flex {
+        flex: 0 0 100% !important;
+    }
+
+    .tagBoxDisplay .d-inline-flex.gap-2 > .d-inline-flex:has(> .form-check) {
+        flex-wrap: wrap !important;
+    }
+
+    .tagBoxDisplay .d-inline-flex.gap-2 > .d-inline-flex > .form-check {
+        flex: 0 0 100% !important;
+        margin-bottom: 0.2rem;
+    }
+
+    /* 구동기 탭: 선택 체크박스 독립 1줄 (time-range 형제 컨테이너 기준) */
+    .tagBoxDisplay .d-flex.flex-row:has(> .time-range) {
+        flex-wrap: wrap !important;
+    }
+
+    .tagBoxDisplay .d-flex.flex-row:has(> .time-range) > .form-check {
+        flex: 0 0 100% !important;
+        margin-bottom: 0.3rem;
+    }
+
+    /* 구역 탭 등 flex-column tagBoxDisplay: 상하 패딩·간격 축소 */
+    .tagBoxDisplay.flex-column {
+        padding-top: 0.8rem !important;
+        padding-bottom: 0.4rem !important;
+    }
+
+    .tagBoxDisplay.flex-column > .d-inline-flex {
+        margin-bottom: 0.3rem !important;
+    }
+
+    /* 구역 탭: 직계 flex-row 행 → 부모 폭 100% 사용 (EC/pH 삐져나감 방지) */
+    .tagBoxDisplay.flex-column > .d-inline-flex.flex-row {
+        width: 100% !important;
+    }
+
+    /* 구역 탭: 선택 체크박스 독립 1줄 (선택↓ 1회공급/분/초) */
+    .tagBoxDisplay.flex-column > .d-inline-flex:has(.form-check) {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+
+    /* 구역 탭 등 flex-column tagBoxDisplay 내부: 분/초 그룹 줄바꿈 없음 */
+    .tagBoxDisplay.flex-column .d-inline-flex {
+        flex-wrap: nowrap !important;
+    }
+
+    /* ① 라디오 버튼: 1줄 고정 (줄바꿈 없음) */
+    .tagBoxDisplay:has(input[type="radio"]) {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+    }
+
+    .tagBoxDisplay:has(input[type="radio"])>.form-check {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* ── 아이폰 미니 이하(≤375px): tagBoxDisplay 배치 조정 ─── */
+@media (max-width: 375px) {
+
+    /* ① checkbox 포함 → 한 줄 전체(100%) */
+    .tab-pane .d-flex.flex-row>.tagBoxDisplay:has(input[type="checkbox"]) {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* ② 시~ 시간범위 쌍 → 한 줄에 2개 유지 (nowrap) */
+    .time-range {
+        flex-wrap: nowrap !important;
+    }
+
+    /* ③ number 입력 폭 축소 (≤375px 좁은 화면) */
+    .tab-pane input[type="number"] {
+        width: 3.5rem !important;
+    }
+
+    #P244 {
+        width: 5rem !important;
+    }
+
+    #P245 {
+        width: 4.2rem !important;
+    }
+
+    #P246 {
+        width: 5rem !important;
+    }
+
+    #P247 {
+        width: 4.2rem !important;
+    }
+
+    /* EC/pH: 소수 1자리 (≤375px) */
+    .tab-pane input[type="number"][step="0.1"] {
+        width: 4.2rem !important;
+    }
+}

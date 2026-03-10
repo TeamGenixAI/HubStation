@@ -1,0 +1,179 @@
+{
+	"informs" :[
+  {
+    "TagCategory": "DO",
+    "GroupName": "양액공급",
+    "TagName": "양액기",
+    "UnitName": "NORMAL",
+    "InstanceNo": 0,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DO",
+    "GroupName": "양액공급",
+    "TagName": "양액기모드",
+    "UnitName": "MODE",
+    "InstanceNo": 1,
+    "OnMsg": "예약",
+    "OffMsg": "기본"
+  },
+  
+  {
+    "TagCategory": "DO",
+    "GroupName": "양액공급",
+    "TagName": "교반기",
+    "UnitName": "NORMAL",
+    "InstanceNo": 16,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DO",
+    "GroupName": "양액공급",
+    "TagName": "교반기모드",
+    "UnitName": "MODE",
+    "InstanceNo": 17,
+    "OnMsg": "예약",
+    "OffMsg": "기본"
+  },
+
+  {
+    "TagCategory": "DO",
+    "GroupName": "에어포그",
+    "TagName": "에어포그",
+    "UnitName": "NORMAL",
+    "InstanceNo": 32,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DO",
+    "GroupName": "에어포그",
+    "TagName": "운전모드",
+    "UnitName": "MODE",
+    "InstanceNo": 33,
+    "OnMsg": "예약",
+    "OffMsg": "기본"
+  },
+  {
+    "TagCategory": "DO",
+    "GroupName": "에어포그",
+    "TagName": "에어포그원수펌프",
+    "UnitName": "NORMAL",
+    "InstanceNo": 11,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+
+  {
+    "TagCategory": "DO",
+    "GroupName": "개폐기",
+    "TagName": "천창",
+    "UnitName": "DOW",
+    "InstanceNo": 48,
+    "OnMsg": "열림",
+    "OffMsg": "닫힘"
+  },
+  {
+    "TagCategory": "DO",
+    "GroupName": "개폐기",
+    "TagName": "커튼1",
+    "UnitName": "DOW",
+    "InstanceNo": 50,
+    "OnMsg": "열림",
+    "OffMsg": "닫힘"
+  },
+  {
+  "TagCategory": "DO",
+  "GroupName": "개폐기",
+  "TagName": "커튼2",
+  "UnitName": "DOW",
+  "InstanceNo": 52,
+  "OnMsg": "열림",
+  "OffMsg": "닫힘"
+},
+  {
+    "TagCategory": "DO",
+    "GroupName": "개폐기",
+    "TagName": "차광막",
+    "UnitName": "DOW",
+    "InstanceNo": 54,
+    "OnMsg": "열림",
+    "OffMsg": "닫힘"
+  },{
+    "TagCategory": "DO",
+     "GroupName": "구동기",
+     "TagName": "환풍기",
+     "UnitName": "NORMAL",
+     "InstanceNo": 64,
+     "OnMsg": "켜짐",
+     "OffMsg": "꺼짐"
+   },
+  {
+    "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "유동팬",
+    "UnitName": "NORMAL",
+    "InstanceNo": 65,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+   "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "CO2발생기1",
+    "UnitName": "NORMAL",
+    "InstanceNo": 66,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+   "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "CO2발생기2",
+    "UnitName": "NORMAL",
+    "InstanceNo": 67,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+   "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "보광기1",
+    "UnitName": "NORMAL",
+    "InstanceNo": 68,
+    "OnMsg": "가동",
+    "OffMsg": "정지"
+  },
+  {
+   "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "보광기2",
+    "UnitName": "NORMAL",
+    "InstanceNo": 69,
+    "OnMsg": "켜짐",
+    "OffMsg": "꺼짐"
+  },
+  {
+   "TagCategory": "DO",
+    "GroupName": "구동기",
+    "TagName": "보광기3",
+    "UnitName": "NORMAL",
+    "InstanceNo": 70,
+    "OnMsg": "켜짐",
+    "OffMsg": "꺼짐"
+  },
+  {
+    "TagCategory": "DO",
+     "GroupName": "구동기",
+     "TagName": "훈증기",
+     "UnitName": "NORMAL",
+     "InstanceNo": 71,
+     "OnMsg": "가동",
+     "OffMsg": "정지"
+   }
+ 
+  
+]
+}

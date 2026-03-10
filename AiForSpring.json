@@ -1,0 +1,213 @@
+{
+	"informs" :[
+ 
+    {
+      "TagCategory": "AI",
+      "GroupName": "현재시각",
+      "TagName": "현재시(hr)",
+      "UnitName": "시",
+      "InstanceNo": 4,
+      "OnMsg": "int",
+      "OffMsg": "Time"
+    },
+    {
+      "TagCategory": "AI",
+      "GroupName": "현재시각",
+      "TagName": "현재분(min)",
+      "UnitName": "분",
+      "InstanceNo": 5,
+      "OnMsg": "int",
+      "OffMsg": "Time"
+    },
+    {
+      "TagCategory": "AI",
+      "GroupName": "현재시각",
+      "TagName": "현재초(sec)",
+      "UnitName": "초",
+      "InstanceNo": 6,
+      "OnMsg": "int",
+      "OffMsg": "Time"
+    },
+    {
+    "TagCategory": "AI",
+    "GroupName": "양액",
+    "TagName": "pH",
+    "UnitName": "",
+    "InstanceNo": 0,
+    "OnMsg": "ten",
+    "OffMsg": "NE"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "양액",
+    "TagName": "EC",
+    "UnitName": "dS/m",
+    "InstanceNo": 1,
+    "OnMsg": "ten",
+    "OffMsg": "NE"
+   },
+  {
+    "TagCategory": "AI",
+    "GroupName": "양액기 가동시간",
+    "TagName": "hours taken",
+    "UnitName": "시간",
+    "InstanceNo": 7,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "양액기 가동시간",
+    "TagName": "minutes taken",
+    "UnitName": "분",
+    "InstanceNo": 8,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  
+  {
+    "TagCategory": "AI",
+    "GroupName": "양액기 가동시간",
+    "TagName": "seconds teken",
+    "UnitName": "초",
+    "InstanceNo": 9,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "양액기 가동시간",
+    "TagName": "가동회수",
+    "UnitName": "회",
+    "InstanceNo": 13,
+    "OnMsg": "int",
+    "OffMsg": "NE"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "교반기 가동시간",
+    "TagName": "hours taken",
+    "UnitName": "시간",
+    "InstanceNo": 10,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "교반기 가동시간",
+    "TagName": "minutes taken",
+    "UnitName": "분",
+    "InstanceNo": 11,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  
+  {
+    "TagCategory": "AI",
+    "GroupName": "교반기 가동시간",
+    "TagName": "seconds teken",
+    "UnitName": "초",
+    "InstanceNo": 12,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "에어포그 가동시간",
+    "TagName": "hours taken",
+    "UnitName": "시간",
+    "InstanceNo": 19,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "에어포그 가동시간",
+    "TagName": "minutes taken",
+    "UnitName": "분",
+    "InstanceNo": 20,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "에어포그 가동시간",
+    "TagName": "seconds teken",
+    "UnitName": "초",
+    "InstanceNo": 21,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "에어포그 가동시간",
+    "TagName": "가동회수",
+    "UnitName": "회",
+    "InstanceNo": 16,
+    "OnMsg": "int",
+    "OffMsg": "Time"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "실내환경",
+    "TagName": "실내온도",
+    "UnitName": "℃",
+    "InstanceNo": 117,
+    "OnMsg": "ten",
+    "OffMsg": "NE"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "실내환경",
+    "TagName": "실내습도",
+    "UnitName": "%",
+    "InstanceNo": 118,
+    "OnMsg": "int",
+    "OffMsg": "NE"
+  },
+  {
+    "TagCategory": "AI",
+    "GroupName": "실내환경",
+    "TagName": "실내CO2",
+    "UnitName": "ppm",
+    "InstanceNo": 26,
+    "OnMsg": "int",
+    "OffMsg": "NE"
+  },
+  {
+		"TagCategory": "AI",
+		"GroupName": "실내환경",
+		"TagName": "광량",
+		"UnitName": "μmol",
+		"InstanceNo": 2,
+		"OnMsg": "int",
+		"OffMsg": "NE"
+	},{
+		"TagCategory": "AI",
+		"GroupName": "실내환경",
+		"TagName": "VPD",
+		"UnitName": "kPa",
+		"InstanceNo": 41,
+		"OnMsg": "int",
+		"OffMsg": "NE"
+	},{
+		"TagCategory": "AI",
+		"GroupName": "실내환경",
+		"TagName": "HD",
+		"UnitName": "g/m3",
+		"InstanceNo": 42,
+		"OnMsg": "int",
+		"OffMsg": "NE"
+	},{
+		"TagCategory": "AI",
+		"GroupName": "실내환경",
+		"TagName": "이슬점",
+		"UnitName": "℃",
+		"InstanceNo": 43,
+		"OnMsg": "ten",
+		"OffMsg": "NE"
+	}
+	
+
+]
+}

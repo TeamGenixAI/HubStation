@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="kor" style="width: 95vw;height: 90vh;font-size: 15px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Pad-PTY3</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bss-overrides.css">
+    <link rel="stylesheet" href="assets/css/MainPannel.css">
+</head>
+
+<body class="w-100 h-100">
+    <div style="width:100%;height:100%;">
+        <ul class="nav nav-tabs d-flex flex-row" role="tablist" style="margin:5px;padding:1px;width:auto;height:40px;">
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-1" style="font-size:16px;font-weight:bold;">양액</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="font-size:16px;font-weight:bold;">구역</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3" style="font-weight:bold;">시간</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4" style="font-weight:bold;">에어포그</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-5" style="font-weight:bold;">개폐기</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-6" style="font-weight:bold;">구동기</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-7" style="font-weight:bold;">보광등</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-8" style="font-weight:bold;">상태</a></li>
+            <li class="nav-item" role="presentation" id="trendTab"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#trandPane" style="font-weight:bold;color:rgb(10,88,202);">데이터추이</a></li>
+        </ul>
+        <div class="tab-content" style="width:95vw;height:95vh;">
+            <div class="tab-pane" role="tabpanel" id="tab-1" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width:95vw;">
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO0T" class="form-check-input" name="DO0G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO0F" class="form-check-input" name="DO0G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0F">정지</label></div><span class="ribbon">시작 정지</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO1" class="form-check-input" name="DO1G" value="manual" onclick="DoActionClick( this )"><label class="form-check-label" for="DO1">기본</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO2" class="form-check-input" name="DO1G" value="schedule" onclick="DoActionClick( this )"><label class="form-check-label" for="DO2">예약</label></div><span class="ribbon">운전모드</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="padding-right: 0.1rem;padding-left: 0.1rem;"><span class="ribbon">운전모드</span><small id="DI15" style="margin:0.6rem;font-size:2rem;">기본운전중</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;"><input type="number" id="P56" style="width:4.5rem;"><small>회</small><span class="ribbon">관수회수</span></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap align-items-xl-center" style="width:95vw;">
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P90B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P90B1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><small style="margin:0.2rem;">열림</small><input type="number" id="P0" style="width:80px;text-align:center;"><small style="margin:3px;">초</small></div>
+                                <div class="d-inline"><small style="margin:3px;">닫힘</small><input type="number" id="P1" style="width:80px;text-align:center;"><small style="margin:3px;">초</small></div>
+                            </div><span class="ribbon">A/B 밸브 타이머&nbsp;</span>
+                        </div>
+                        <div class="tagBoxDisplay"><input type="checkbox" id="P113B4" class="form-check-input" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="form-check-label" for="P113B4" style="font-size:25px;margin:2px;">A/B 밸브</label><span class="ribbon">밸브사용</span></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap" style="width:95vw;">
+                        <div class="d-inline-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO16T" class="form-check-input" name="DO16G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO16T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO16F" class="form-check-input" name="DO16G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO16F">정지</label></div><span class="ribbon">교반기 시작 정지</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO17" class="form-check-input" name="DO17G" value="manual" onclick="DoActionClick( this )"><label class="form-check-label" for="DO17">기본</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO18" class="form-check-input" name="DO17G" value="schedule" onclick="DoActionClick( this )"><label class="form-check-label" for="DO18">예약</label></div><span class="ribbon">교반기모드</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="padding-right: 0.1rem;padding-left: 0.1rem;"><span class="ribbon">교반기모드</span><small id="DI14" style="margin:0.6rem;font-size:2rem;">기본운전중</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;"><input type="number" id="P97" style="width:4.5rem;"><small>회</small><span class="ribbon">교반회수</span></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap" style="width:95vw;">
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;">
+                            <div class="d-inline" style="margin-right:5px;"><input type="number" id="P39M" style="width:4rem;"><small style="margin:0.1rem;">분</small></div>
+                            <div class="d-inline"><input type="number" id="P39S" style="width:4rem;"><small style="margin:0.1rem;">초</small></div><span class="ribbon">1회교반시간</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;">
+                            <div class="d-inline" style="margin-right:5px;"><input type="number" id="P38" style="width:4rem;"><small style="margin:0.1rem;">시</small></div>
+                            <div class="d-inline"><input type="number" id="P37" style="width:4rem;"><small style="margin:01.rem;">분</small></div><span class="ribbon">교반시작시점</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;">
+                            <div class="d-inline" style="margin-right:5px;"><input type="number" id="P98M" style="width:4rem;"><small style="margin:0.1rem;">분</small></div>
+                            <div class="d-inline"><input type="number" id="P98S" style="width:4rem;"><small style="margin:0.1rem;">초</small></div><span class="ribbon">교반중지시간</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-2" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex flex-column align-items-xxl-center tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">1구역</span>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-xl-center align-items-xxl-center" style="margin-bottom:0.7rem;">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P95B1" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P95B1" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><small style="margin:0.2rem;">1회공급</small><input type="number" id="P40M" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">분</small><input type="number" id="P40S" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">초</small></div>
+                            </div>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center" style="margin-bottom:0.7rem;">
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">EC</small><input type="number" id="P18" step="0.1" style="width:5rem;text-align:center;"><small style="margin:0.2rem;">ds/m</small></div>
+                                <div class="d-inline-flex flex-row justify-content-between align-items-center" style="margin-bottom:0.7rem;">
+                                    <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">pH</small><input type="number" id="P2" step="0.1" style="width:5rem;text-align:center;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex flex-column align-items-xxl-center tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">2구역</span>
+                            <div class="d-inline-flex flex-row align-items-xl-center align-items-xxl-center" style="margin-bottom:0.7rem;">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P95B2" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P95B2" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><small style="margin:0.2rem;">1회공급</small><input type="number" id="P41M" style="width:4rem;text-align:center;"><small style="margin:3px;">분</small><input type="number" id="P41S" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">초</small></div>
+                            </div>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center" style="margin-bottom:0.7rem;">
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">EC</small><input type="number" id="P19" step="0.1" style="width:5rem;text-align:center;"><small style="margin:0.2rem;">ds/m</small></div>
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">pH</small><input type="number" id="P3" step="0.1" style="width:5rem;text-align:center;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;"></div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex flex-column align-items-xxl-center tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">3구역</span>
+                            <div class="d-inline-flex flex-row align-items-xl-center align-items-xxl-center" style="margin-bottom:0.7rem;">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P95B3" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P95B3" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><small style="margin:0.2rem;">1회공급</small><input type="number" id="P42M" style="width:4rem;text-align:center;"><small style="margin:3px;">분</small><input type="number" id="P42S" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">초</small></div>
+                            </div>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center" style="margin-bottom:0.7rem;">
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">EC</small><input type="number" id="P20" step="0.1" style="width:5rem;text-align:center;"><small style="margin:0.2rem;">ds/m</small></div>
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:0.2rem;">pH</small><input type="number" id="P4" step="0.1" style="width:5rem;text-align:center;"></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex flex-column align-items-xxl-center tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">4구역</span>
+                            <div class="d-inline-flex flex-row align-items-xl-center align-items-xxl-center" style="margin-bottom:0.7rem;">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P95B4" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P95B4" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><small style="margin:0.2rem;">1회공급</small><input type="number" id="P43M" style="width:4rem;text-align:center;"><small style="margin:3px;">분</small><input type="number" id="P43S" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">초</small></div>
+                            </div>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center">
+                                <div class="d-inline-flex" style="margin-bottom:0.7rem;"><small style="margin:0.2rem;">EC</small><input type="number" id="P21" step="0.1" style="width:5rem;text-align:center;"><small style="margin:0.2rem;">ds/m</small></div>
+                                <div class="d-inline-flex" style="margin-bottom:0.7rem;"><small style="margin:0.2rem;">pH</small><input type="number" id="P5" step="0.1" style="width:5rem;text-align:center;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;"></div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex flex-column align-items-xxl-center tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">5구역</span>
+                            <div class="d-inline-flex flex-row align-items-xl-center align-items-xxl-center" style="margin-bottom:0.7rem;">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P95B5" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P95B5" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><small style="margin:0.2rem;">1회공급</small><input type="number" id="P44M" style="width:4rem;text-align:center;"><small style="margin:3px;">분</small><input type="number" id="P44S" style="width:4rem;text-align:center;"><small style="margin:0.2rem;">초</small></div>
+                            </div>
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center">
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:3px;">EC</small><input type="number" id="P22" step="0.1" style="width:5rem;text-align:center;"><small style="margin:0.2rem;">ds/m</small></div>
+                                <div class="d-inline-flex" style="width:auto;"><small style="margin:3px;">pH</small><input type="number" id="P6" step="0.1" style="width:5rem;text-align:center;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-3" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대1</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B1" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B1" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P58" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P57" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대7</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B7" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B7" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P70" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P69" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대2</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B2" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B2" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P60" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P59" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대8</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B8" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B8" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P72" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P71" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대3</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B3" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B3" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P62" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P61" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대9</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B9" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B9" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P74" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P73" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;">
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B4" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B4" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P64" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P63" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div><span class="ribbon">시간대4</span>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;">
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B10" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B10" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P76" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P75" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div><span class="ribbon">시간대10</span>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대5</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B5" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B5" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P66" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P65" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대11</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B11" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B11" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P78" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P77" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-100 flex-row justify-content-between flex-wrap" style="margin-bottom:1rem;">
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대6</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B6" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B6" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P68" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P67" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex w-auto h-auto d-flex flex-row justify-content-between tagBoxDisplay" style="padding-top:1.3rem;padding-bottom:0.7rem;"><span class="ribbon">시간대12</span>
+                            <div class="d-inline-flex flex-row align-items-xxl-center">
+                                <div class="form-check" style="width:auto;height:auto;position:relative;display:inline-flex;color:rgb(0,0,150);font-size:2rem;margin-right:1.2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P96B12" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="justify-content-between form-check-label" for="P96B12" style="font-size:2rem;margin:initial;margin-bottom:0px;margin-left:0px;">선택</label></div>
+                                <div class="d-inline-flex" style="width:auto;margin-right:10px;"><input type="number" id="P80" style="width:4rem;"><small style="margin:0.2rem;">시</small><input type="number" id="P79" style="width:4rem;"><small style="margin:0.2rem;">분</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-4" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width: 95vw;margin-bottom: 0.8rem;">
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO32T" class="form-check-input" name="DO32G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO32T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO32F" class="form-check-input" name="DO32G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO32F">정지</label></div><span class="ribbon">시작 정지</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO33" class="form-check-input" name="DO33G" value="manual" onclick="DoActionClick( this )"><label class="form-check-label" for="DO33">기본</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO34" class="form-check-input" name="DO33G" value="schedule" onclick="DoActionClick( this )"><label class="form-check-label" for="DO34">예약</label></div><span class="ribbon">운전모드</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="padding-right: 0.1rem;padding-left: 0.1rem;"><span class="ribbon">운전모드</span><small id="DI13" style="margin:0.6rem;font-size:2rem;">기본운전중</small></div>
+                        <div class="d-flex flex-row justify-content-between align-items-center tagBoxDisplay">
+                            <div style="margin-right: 0.3rem;"><input type="checkbox" id="P103B2" class="form-check-input" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="form-check-label" for="P103B2" style="font-size:25px;margin:2px;">포그</label></div>
+                            <div style="margin-right: 0.3rem;"><input type="checkbox" id="P103B3" class="form-check-input" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="form-check-label" for="P103B3" style="font-size:25px;margin:2px;">농약</label></div>
+                            <div style="margin-right: 0.3rem;"><input type="checkbox" id="P103B4" class="form-check-input" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="form-check-label" for="P103B4" style="font-size:25px;margin:2px;">청소</label></div>
+                            <div style="margin-right: 0.3rem;"><input type="checkbox" id="P103B1" class="form-check-input" style="color:rgb(0,0,150);font-weight:bold;border-width:2px;border-style:solid;"><label class="form-check-label" for="P103B1" style="font-size:25px;margin:2px;">퇴수</label></div><span class="ribbon">사용모드</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap align-items-xl-center" style="width: 95vw;margin-bottom: 0.8rem;">
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P110" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                                <div class="d-inline"><input type="number" id="P109" style="width:80px;text-align:center;"><small style="margin:3px;">분 부터&nbsp;</small></div>
+                                <div class="d-inline"><input type="number" id="P107" style="width:80px;text-align:center;"><small style="margin:3px;">회</small></div>
+                            </div><span class="ribbon">시작시간/회수</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO11T" class="form-check-input" name="DO11G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO11T">운전</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO11F" class="form-check-input" name="DO11G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO11F">정지</label></div><span class="ribbon">원수펌프</span>
+                        </div>
+                        <div class="tagBoxDisplay" style="width:auto;padding-left:10px;padding-right:0px;">
+                            <div class="d-inline" style="margin-right:5px;"><input type="number" id="P108M" style="width:4rem;"><small style="margin:0.1rem;">분</small></div>
+                            <div class="d-inline"><input type="number" id="P108S" style="width:4rem;"><small style="margin:0.1rem;">초</small></div><span class="ribbon">포그주기</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap" style="width: 95vw;margin-bottom: 0.8rem;">
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P99B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P99B1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P104M" style="width:80px;text-align:center;"><small style="margin:3px;">분</small></div>
+                                <div class="d-inline"><input type="number" id="P104S" style="width:80px;text-align:center;"><small style="margin:3px;">초</small></div>
+                            </div><span class="ribbon">구역1&nbsp;</span>
+                        </div>
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P99B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P99B2" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P105M" style="width:80px;text-align:center;"><small style="margin:3px;">분</small></div>
+                                <div class="d-inline"><input type="number" id="P105S" style="width:80px;text-align:center;"><small style="margin:3px;">초</small></div>
+                            </div><span class="ribbon">구역2</span>
+                        </div>
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P99B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P99B3" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P106M" style="width:80px;text-align:center;"><small style="margin:3px;">분</small></div>
+                                <div class="d-inline"><input type="number" id="P106S" style="width:80px;text-align:center;"><small style="margin:3px;">초</small></div>
+                            </div><span class="ribbon">구역3&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">온습도제어1</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B9" style="font-size:1.7rem;margin:initial;">시간</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P210" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P211" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P100B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P100B3" style="font-size:1.7rem;margin:initial;">온도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P192" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                                <div class="d-inline"><input type="number" id="P193" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P100B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P100B1" style="font-size:1.7rem;margin:initial;">습도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P188" style="width:80px;text-align:center;"><small style="margin:3px;">%</small></div>
+                                <div class="d-inline"><input type="number" id="P189" style="width:80px;text-align:center;"><small style="margin:3px;">%</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">온습도제어2</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B10" style="font-size:1.7rem;margin:initial;">시간</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P212" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P213" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P100B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P100B4" style="font-size:1.7rem;margin:initial;">온도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P194" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                                <div class="d-inline"><input type="number" id="P195" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P100B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P100B2" style="font-size:1.7rem;margin:initial;">습도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P190" style="width:80px;text-align:center;"><small style="margin:3px;">%</small></div>
+                                <div class="d-inline"><input type="number" id="P191" style="width:80px;text-align:center;"><small style="margin:3px;">%</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-5" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width: 95vw;margin-bottom: 0.8rem;">
+                        <div class="flex-row justify-content-between flex-wrap tagBoxDisplay" style="max-width:25rem;">
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO48" class="form-check-input" name="DO48G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO48">닫기</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO49" class="form-check-input" name="DO48G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO49">열기</label></div>
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO48S" class="form-check-input" name="DO48G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO48S">정지</label></div><span class="ribbon">천창</span>
+                        </div>
+                        <div class="d-flex align-items-center tagBoxDisplay">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B1" style="font-size:1.7rem;margin:initial;">선택</label></div><span class="ribbon">강우자동닫힘&nbsp;</span>
+                        </div>
+                        <div class="flex-row justify-content-between flex-wrap tagBoxDisplay" style="max-width:25rem;">
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO50" class="form-check-input" name="DO50G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO50">닫기</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO51" class="form-check-input" name="DO50G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO51">열기</label></div>
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO50S" class="form-check-input" name="DO50G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO50S">정지</label></div><span class="ribbon">커튼1</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width: 95vw;margin-bottom: 0.8rem;">
+                        <div class="flex-row justify-content-between flex-wrap tagBoxDisplay" style="max-width:25rem;">
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO54" class="form-check-input" name="DO54G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO54">닫기</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO55" class="form-check-input" name="DO54G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO55">열기</label></div>
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO54S" class="form-check-input" name="DO54G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO54S">정지</label></div><span class="ribbon">차광막</span>
+                        </div>
+                        <div class="flex-row justify-content-between flex-wrap tagBoxDisplay" style="max-width:25rem;">
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO52" class="form-check-input" name="DO52G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO52">닫기</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO53" class="form-check-input" name="DO52G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO53">열기</label></div>
+                            <div class="form-check" style="color: rgb(0,0,150);font-size: 2rem;position: relative;display: inline-flex;width: auto;margin-left: 0.7rem;"><input type="radio" id="DO52S" class="form-check-input" name="DO52G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO52S">정지</label></div><span class="ribbon">커튼2</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">개폐설정1</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B9-1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P115" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P116" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">온도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P117" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><label class="justify-content-between form-check-label" for="P100B1-1" style="font-size:1.7rem;margin:initial;">편차</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P118" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">개폐설정2</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B9-1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P119" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P120" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">온도</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P121" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><label class="justify-content-between form-check-label" for="P100B1-1" style="font-size:1.7rem;margin:initial;">편차</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P122" style="width:80px;text-align:center;"><small style="margin:3px;">℃</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">커튼자동설정</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B4" style="font-size:1.7rem;margin:initial;">선택1</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P123" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P124" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B5" style="font-size:1.7rem;margin:initial;">선택2</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P125" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P126" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-6" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">유동팬</span>
+                        <div class="d-flex flex-row justify-content-between" style="margin-bottom: 0.7rem;width:99%">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B10" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-inline-flex justify-content-between">
+                                    <div class="d-inline"><input type="number" id="P160" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                    <div class="d-inline"><input type="number" id="P161" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                                </div>
+                            </div>
+                            <div class="text-center d-inline-flex flex-row justify-content-center">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="d-flex justify-content-between align-items-center form-check-input" type="checkbox" id="P235B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="d-flex justify-content-between align-items-center form-check-label" for="P114B10-1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-flex flex-row justify-content-between"><input class="d-flex align-items-center" type="number" id="P236" style="width:80px;text-align:center;"><small class="d-flex align-items-center" style="margin:3px;">℃</small></div><label class="d-flex justify-content-between align-items-center form-check-label" for="P100B1-1" style="font-size:1.7rem;margin:initial;">&nbsp; 편차</label><input class="d-flex align-items-center" type="number" id="P237" style="width:80px;text-align:center;"><small class="d-flex align-items-center" style="margin:3px;">℃</small>
+                            </div>
+                            <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO65T" class="form-check-input" name="DO65G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO65T">시작</label></div>
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO65F" class="form-check-input" name="DO65G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO65F">정지</label></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between" style="/*margin-bottom: 0.7rem;*/width: 99%;">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B11" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-inline-flex justify-content-between">
+                                    <div class="d-inline"><input type="number" id="P162" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                    <div class="d-inline"><input type="number" id="P163" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                                </div>
+                            </div>
+                            <div class="text-center d-inline-flex flex-row justify-content-center">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="d-flex justify-content-between align-items-center form-check-input" type="checkbox" id="P235B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="d-flex justify-content-between align-items-center form-check-label" for="P114B10-2" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-flex flex-row justify-content-between"><input class="d-flex align-items-center" type="number" id="P238" style="width:80px;text-align:center;"><small class="d-flex align-items-center" style="margin:3px;">℃</small></div><label class="d-flex justify-content-between align-items-center form-check-label" for="P100B1-1" style="font-size:1.7rem;margin:initial;">&nbsp; 편차</label><input class="d-flex align-items-center" type="number" id="P239" style="width:80px;text-align:center;"><small class="d-flex align-items-center" style="margin:3px;">℃</small>
+                            </div>
+                            <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO65T-1" class="form-check-input" value="start" disabled=""><label class="text-opacity-75 form-check-label" for="DO65T-1">시작</label></div>
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO65F-1" class="form-check-input" value="stop" disabled=""><label class="text-opacity-25 form-check-label" for="DO65F-1">정지</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">환풍기</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B12" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P164" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P165" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B13" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B9-1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P166" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P167" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO64T" class="form-check-input" name="DO64G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO64T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO64F" class="form-check-input" name="DO64G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO64F">정지</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">훈증기</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B8" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P135" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P136" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B9-1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P139" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P140" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO71T" class="form-check-input" name="DO71G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO71T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO71F" class="form-check-input" name="DO71G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO71F">정지</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">CO2</span>
+                        <div class="d-flex flex-row justify-content-between" style="margin-bottom: 0.7rem;width:99%">
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P113B8" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-inline-flex justify-content-between">
+                                    <div class="d-inline"><input type="number" id="P204" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                    <div class="d-inline"><input type="number" id="P205" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex flex-row align-items-center"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">설정치</label><input type="number" id="P244" style="width:80px;text-align:center;"><small style="margin:3px;">ppm</small></div>
+                            <div class="d-inline-flex flex-row align-items-center"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">편차</label><input type="number" id="P245" style="width:80px;text-align:center;"><small style="margin:3px;">ppm</small></div>
+                            <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO66T" class="form-check-input" name="DO66G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO66T">시작</label></div>
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO66F" class="form-check-input" name="DO66G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO66F">정지</label></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between" style="/*margin-bottom: 0.7rem;*/width: 99%;">
+                            <div class="d-inline-flex flex-row justify-content-between align-items-center">
+                                <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P114B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P114B9" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                                <div class="d-inline-flex justify-content-between">
+                                    <div class="d-inline"><input type="number" id="P206" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                    <div class="d-inline"><input type="number" id="P207" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex flex-row align-items-center"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">설정치</label><input type="number" id="P246" style="width:80px;text-align:center;"><small style="margin:3px;">ppm</small></div>
+                            <div class="d-inline-flex flex-row align-items-center"><label class="justify-content-between form-check-label" for="P100B3-1" style="font-size:1.7rem;margin:initial;">편차</label><input type="number" id="P247" style="width:80px;text-align:center;"><small style="margin:3px;">ppm</small></div>
+                            <div class="d-xxl-flex justify-content-between flex-wrap" style="max-width:15rem;">
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO67T" class="form-check-input" name="DO67G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO67T">시작</label></div>
+                                <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO67F" class="form-check-input" name="DO67G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO67F">정지</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-7" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width:95vw;">
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO68T" class="form-check-input" name="DO68G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO68T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO68F" class="form-check-input" name="DO68G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO68F">정지</label></div><span class="ribbon">보광기1</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO69T" class="form-check-input" name="DO69G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO69T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO69F" class="form-check-input" name="DO69G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO69F">정지</label></div><span class="ribbon">보광기2</span>
+                        </div>
+                        <div class="d-xxl-flex justify-content-between flex-wrap tagBoxDisplay" style="max-width:15rem;">
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;width:auto;"><input type="radio" id="DO70T" class="form-check-input" name="DO70G" value="start" onclick="DoActionClick( this )"><label class="form-check-label" for="DO70T">시작</label></div>
+                            <div class="form-check" style="color:rgb(0,0,150);font-size:2rem;position:relative;display:inline-flex;margin-left:0.7rem;width:auto;"><input type="radio" id="DO70F" class="form-check-input" name="DO70G" value="stop" onclick="DoActionClick( this )"><label class="form-check-label" for="DO70F">정지</label></div><span class="ribbon">보광기3</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">설정1</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B1" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P172" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P173" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B1" style="font-size:1.7rem;margin:initial;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B2" style="font-size:1.7rem;margin:initial;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B3" style="font-size:1.7rem;margin:initial;">3구역</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">설정2</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B2" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P174" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P175" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B4" style="font-size:1.7rem;margin:initial;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B5" style="font-size:1.7rem;margin:initial;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B6" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B6" style="font-size:1.7rem;margin:initial;">3구역</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">설정3</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B3" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P176" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P177" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B7" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B7" style="font-size:1.7rem;margin:initial;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B8" style="font-size:1.7rem;margin:initial;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B9" style="font-size:1.7rem;margin:initial;">3구역</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap tagBoxDisplay" style="width: 95vw;margin-bottom: 0.8rem;"><span class="ribbon">설정4</span>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P169B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P169B4" style="font-size:1.7rem;margin:initial;">선택</label></div>
+                            <div class="d-inline-flex justify-content-between">
+                                <div class="d-inline"><input type="number" id="P178" style="width:80px;text-align:center;"><small style="margin:3px;">시~</small></div>
+                                <div class="d-inline"><input type="number" id="P179" style="width:80px;text-align:center;"><small style="margin:3px;">시</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B10" style="font-size:1.7rem;margin:initial;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B11" style="font-size:1.7rem;margin:initial;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 2rem;flex-direction: row;flex-wrap: nowrap;align-content: space-around;justify-content: space-evenly;align-items: center;margin-right: 2rem;"><input class="justify-content-between form-check-input" type="checkbox" id="P170B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 0.2rem;border-style: solid;"><label class="justify-content-between form-check-label" for="P170B12" style="font-size:1.7rem;margin:initial;">3구역</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane active" role="tabpanel" id="tab-8" style="width:100vw;height:100vh;">
+                <div class="container d-flex flex-column justify-content-between flex-wrap" style="min-width:95vw;min-height:90vh;padding:0px;border-style:none;padding-top:0.5rem;margin:0.3rem;">
+                    <div class="d-flex flex-row justify-content-between flex-wrap">
+                        <div class="tagBoxDisplay" style="width:auto;"><span class="ribbon">EC</span><small id="A1" style="margin:0.2rem;font-size:2rem;">2.6&nbsp;</small><small style="margin:0.2rem;font-size:2rem;">dS/m</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;"><span class="ribbon">pH</span><small id="A0" style="margin:0.2rem;font-size:2rem;">2.6&nbsp;</small></div>
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">양액구역</span><small id="DI16" style="margin:0.6rem;font-size:2rem;">1</small><small id="DI17" style="margin:0.6rem;font-size:2rem;">2</small><small id="DI18" style="margin:0.6rem;font-size:2rem;">3</small><small id="DI19" style="margin:0.6rem;font-size:2rem;">4</small><small id="DI20" style="margin:0.6rem;font-size:2rem;">5</small><small id="DI21" style="margin:0.6rem;font-size:2rem;">6</small><small id="DI22" style="margin:0.6rem;font-size:2rem;">7</small><small id="DI23" style="margin:0.6rem;font-size:2rem;">8</small></div>
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">양액기 가동시간</span><small id="A7" style="margin:0.2rem;font-size:2rem;">24</small><small style="margin:0.2rem;font-size:2rem;">시간</small><small id="A8" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">분</small><small id="A9" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">초</small><small id="A13" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">회</small></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap">
+                        <div class="tagBoxDisplay" style="width:auto;height:auto;"><span class="ribbon">온도</span><small id="A17" style="margin:0.2rem;font-size:2rem;">15.7&nbsp;</small><small style="margin:0.2rem;font-size:2rem;">℃</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;height:auto;"><span class="ribbon" style="width:5rem;">습도</span><small id="A18" style="margin:0.2rem;font-size:2rem;">57</small><small style="margin:0.2rem;font-size:2rem;">&nbsp;%</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;height:auto;"><span class="ribbon" style="width:5rem;">CO2</span><small id="A26" style="margin:0.2rem;font-size:2rem;">1999</small><small style="margin:0.2rem;font-size:2rem;">&nbsp;ppm</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;height:auto;"><span class="ribbon">이슬점온도</span><small id="A43" style="margin:0.2rem;font-size:2rem;">15.7&nbsp;</small><small style="margin:0.2rem;font-size:2rem;">℃</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;"><span class="ribbon">HD</span><small id="A42" style="margin:0.2rem;font-size:2rem;">99.3</small><small style="margin:0.2rem;font-size:2rem;">g/m³</small></div>
+                        <div class="tagBoxDisplay" style="width:auto;"><span class="ribbon">VPD</span><small id="A41" style="margin:0.2rem;font-size:2rem;">1756</small><small style="margin:0.2rem;font-size:2rem;">kPa</small></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between flex-wrap">
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">포그구역</span><small id="DI32" style="margin:0.6rem;font-size:2rem;">1</small><small id="DI33" style="margin:0.6rem;font-size:2rem;">2</small><small id="DI34" style="margin:0.6rem;font-size:2rem;">3</small><small id="DI35" style="margin:0.6rem;font-size:2rem;">4</small></div>
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">포그가동시간</span><small id="A19" style="margin:0.2rem;font-size:2rem;">24</small><small style="margin:0.2rem;font-size:2rem;">시간</small><small id="A20" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">분</small><small id="A21" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">초</small><small id="A16" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">회</small></div>
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">교반기가동시간</span><small id="A10" style="margin:0.2rem;font-size:2rem;">24</small><small style="margin:0.2rem;font-size:2rem;">시간</small><small id="A11" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">분</small><small id="A12" style="margin:0.2rem;font-size:2rem;">60</small><small style="margin:0.2rem;font-size:2rem;">초</small></div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center flex-wrap">
+                        <div class="tagBoxDisplay" style="padding-right:10px;padding-left:10px;"><span class="ribbon">현재시각</span><small id="A4" style="margin:0.2rem;font-size:2rem;">24시</small><small id="A5" style="margin:0.2rem;font-size:2rem;">60분</small><small id="A6" style="margin:0.2rem;font-size:2rem;">60분</small></div>
+                        <div class="tagDisplay110" style="width:auto;"><button class="btn btn-primary" id="BtnDownload" type="button" style="font-size:30px;" onclick="btnDownload( )">제어기로 설정치 쓰기</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="trandPane" style="width:1290px;height:610px;">
+                <div class="ratio ratio-16x9"><iframe src="&quot; &quot;" id="trendIframe"></iframe></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="toast fade text-center bg-info position-fixed top-50 start-50 translate-middle hide" role="alert" data-bs-delay="2500" id="toast-1" style="margin: auto;font-size: 30px;">
+        <div class="toast-body" role="alert" style="font-size: 30px;">
+            <p class="fs-6 fw-semibold" id="ToastMsg" style="font-size: xx-large;color: var(--bs-body-bg);text-align: center;">This is a Toast message</p>
+        </div>
+    </div>
+
+    <script>
+    let lastTap = 0;
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('touchend', function(e) {
+      // 터치 이벤트가 실행된 시간
+      const now = new Date().getTime();
+      if (now - lastTap < 300) { // 300ms 이내에 두 번 터치
+        toggleFullscreen();
+      }
+      lastTap = now;
+    });
+
+    // PC 환경(마우스 더블클릭)도 지원하고 싶다면 아래 추가
+    document.addEventListener('dblclick', toggleFullscreen);
+   </script>
+
+
+
+
+    <script>
+        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function (el) {
+            el.addEventListener('focus', function (e) {
+                e.target.blur();
+            });
+        });
+
+    </script>
+
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        let sockwtInfo = [[${ wsuri }]];
+        let aiinform = [[${ aiInform }]];
+        let parmvalues = [[${ parmValues }]];
+        let parminform = [[${ parmInform }]];
+        let doinform = [[${ doInform }]];
+        let diinform = [[${ diInform }]];
+    </script>
+    <script type="text/javascript" src="js/new-pc-tab-websocket.js"></script>
+
+</body>
+
+</html>

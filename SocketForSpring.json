@@ -1,0 +1,9 @@
+{
+  "dnsName": "park3new.iptime.org",
+  
+  "PORT": 44820,
+
+  "webport":9832,
+  "stream" : 8081
+   
+ }

@@ -1,0 +1,38 @@
+[
+  {
+    "TagCategory": "양액",
+    "GroupName": "양액기기동",
+    "TagName": "시작정지",
+    "UnitName": "NORMAL",
+    "InstanceNo": 0,
+    "OnMsg": "시작",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "양액",
+    "GroupName": "양액기운전모드",
+    "TagName": "양액기모드",
+    "UnitName": "MODE",
+    "InstanceNo": 1,
+    "OnMsg": "예약",
+    "OffMsg": "기본"
+  },
+  {
+    "TagCategory": "양액",
+    "GroupName": "교반기기동",
+    "TagName": "교반기",
+    "UnitName": "NORMAL",
+    "InstanceNo": 16,
+    "OnMsg": "시작",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "양액",
+    "GroupName": "교반기모드",
+    "TagName": "교반기모드",
+    "UnitName": "MODE",
+    "InstanceNo": 17,
+    "OnMsg": "예약",
+    "OffMsg": "기본"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(cd D:\\\\ClaudeCode\\\\박태영3:*)",
+      "WebFetch(domain:www.google.com)"
+    ]
+  }
+}

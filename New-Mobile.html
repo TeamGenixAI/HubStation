@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Mobile-PTY3</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div>
+        <ul class="nav nav-tabs overflow-x-auto flex-nowrap ;white-sapce:nowrap" role="tablist">
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-1">양액</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-2">구역</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-3">시간</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-8">에어포그</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-4">개폐</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-5">보광/유동팬</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-6">환풍/훈증/CO2</a></li>
+            <li class="nav-item flex-row" role="presentation"><a class="nav-link active text-nowrap d-inline-block" role="tab" data-bs-toggle="tab" href="#tab-7">상태</a></li>
+        </ul>
+        <div class="tab-content overflow-y-auto">
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-1">
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO0T" name="DO0G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO0F" name="DO0G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">양액기시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;font-size: 30px;">
+                    <div><small id="DI143" style="margin: 3px;font-size: 30px;">예약 운전 중</small></div>
+                    <div class="d-flex flex-row" style="justify-content: space-between;">
+                        <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO1" name="DO1G" value="MANUAL" onclick="DoActionClick( this )"><label class="form-check-label" for="DO1" style="font-size: 27px;">기본</label></div>
+                        <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO2" name="DO1G" value="SCHEDULE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO2" style="font-size: 27px;">예약</label></div>
+                    </div><span class="ribbon" style="display: flex;">양액기운전모드</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B8" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P226B1-1" style="font-size: 25px;margin: 2px;">일</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B2" style="font-size: 25px;margin: 2px;">월</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B3" style="font-size: 25px;margin: 2px;">화</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B4" style="font-size: 25px;margin: 2px;">수</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B5" style="font-size: 25px;margin: 2px;">목</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B6" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B6" style="font-size: 25px;margin: 2px;">금</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P93B7" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P93B7" style="font-size: 25px;margin: 2px;">토</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">요일운전</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">공급회수</small><small class="fs-2" id="P56" style="margin: 3px;font-size: 30px;">2</small><small class="fs-2" style="margin: 3px;font-size: 30px;">회</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP56" min="0" max="10" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">공급회수</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">수위레벨타이머</small><small class="fs-2" id="P88" style="margin: 3px;font-size: 30px;">2</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP88" min="0" max="10" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">수위레벨</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P113B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P113B4" style="font-size: 25px;margin: 2px;">A/B</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P113B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P113B5" style="font-size: 25px;margin: 2px;">C</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">밸브 사용</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P90B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P100B1-1" style="font-size: 25px;margin: 2px;">사용</label></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">ON</small><small class="fs-2 d-inline" id="P0" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">OFF</small><small class="fs-2 d-inline" id="P1" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP0" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP1" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">A/B밸브타이머</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P91B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P91B1" style="font-size: 25px;margin: 2px;">사용</label></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">ON</small><small class="fs-2 d-inline" id="P86" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">OFF</small><small class="fs-2 d-inline" id="P87" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP86" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP87" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">C밸브타이머</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P85" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P89" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP85" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP89" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">경보설정</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" id="P38" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                            <div><small class="fs-2" id="P37" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div><small class="fs-2" style="margin: 3px;font-size: 30px;">부터</small>
+                            <div class="d-flex align-items-center"><small class="fs-2" id="P39" style="margin: 3px;font-size: 30px;">200</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP38" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP37" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP39" min="0" max="200" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">교반기</span>
+                </div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-2">
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P18" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P2" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P40M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P40S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP18" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP2" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP40" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">1구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B2" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P19" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P3" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P41M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P41S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP19" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP3" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP41" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">2구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B3" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P20" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P4" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P42M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P42S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP20" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP4" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP42" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">3구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B4" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P21" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P5" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P43M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P43S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP21" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP5" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP43" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">4구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B5" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P22" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P6" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P44M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P44S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP22" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP6" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP44" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">5구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P95B6" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P95B6" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">EC</small><small class="fs-2" id="P23" style="margin: 3px;font-size: 30px;">1.1</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ds/m</small></div>
+                            <div class="d-flex align-items-center"><small class="fs-2" style="margin: 3px;font-size: 30px;">pH</small><small class="fs-2" id="P7" style="margin: 3px;font-size: 30px;">5.4</small></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" style="margin: 3px;font-size: 30px;">1회공급시간</small><small class="fs-2" id="P45M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P45S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP23" min="0" max="5" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP7" min="0" max="9" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP45" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">6구역</span>
+                </div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-3">
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P58" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P57" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP58" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP57" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B2" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P60" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P59" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP60" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP59" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간2</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B3" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P62" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P61" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP62" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP61" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간3</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B4" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P64" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P63" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP64" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP63" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간4</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B5" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P66" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P65" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP66" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP65" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간5</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B6" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B6" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P68" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P67" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP68" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP67" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간6</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B7" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B7" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P70" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P69" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP70" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP69" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간7</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B8" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P72" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P71" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP72" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP71" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간8</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B9" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P74" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P73" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP74" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP73" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간9</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B10" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P76" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P75" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP76" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP75" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간10</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B11" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P78" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P77" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP78" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP77" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간11</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B12" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P80" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P79" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP80" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP79" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간12</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B13" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B13" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P82" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P81" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP82" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP81" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간13</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P96B14" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P96B14" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P84" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P83" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP84" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP83" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">시간14</span>
+                </div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-4">
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO48" name="DO48G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO48" style="font-size: 27px;">닫기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO49" name="DO48G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO49" style="font-size: 27px;">열기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO48S" name="DO48G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO48S" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">천창</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO50" name="DO50G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO50" style="font-size: 27px;">닫기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO51" name="DO50G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO51" style="font-size: 27px;">열기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO50S" name="DO50G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO50S" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">커튼1</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO52" name="DO52G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO52" style="font-size: 27px;">닫기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO53" name="DO52G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO53" style="font-size: 27px;">열기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO52S" name="DO52G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO52S" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">커튼2</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO54" name="DO54G" value="CLOSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO54" style="font-size: 27px;">닫기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO55" name="DO54G" value="OPEN" onclick="DoActionClick( this )"><label class="form-check-label" for="DO55" style="font-size: 27px;">열기</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO54S" name="DO54G" value="PAUSE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO54S" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">차광막</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">강우시자동선택</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B4" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P48" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P49" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P50" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P51" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP48" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP49" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP50" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP51" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B4" style="font-size: 25px;margin: 2px;">주기사용</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-3" style="margin: 3px;font-size: 30px;">열림주기</small><small class="fs-2" id="P216M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P216S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP216" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-4" style="margin: 3px;font-size: 30px;">인터벌</small><small class="fs-2" id="P217M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P217S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div id="SP217"><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP117-2" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P253B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P253B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P253B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P253B2" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P253B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P253B3" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P253B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P253B4" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">시간설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B5" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P52" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P53" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P54" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P55" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP52" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP53" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP54" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP55" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B5" style="font-size: 25px;margin: 2px;">주기사용</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-1" style="margin: 3px;font-size: 30px;">열림주기</small><small class="fs-2" id="P123M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P123S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div oninput=""><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP123" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-2" style="margin: 3px;font-size: 30px;">인터벌</small><small class="fs-2" id="P124M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P124S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div id="SP217-1"><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP124" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P137B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P137B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B2" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P137B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B3" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P137B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B4" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">시간설정2</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B11" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P156" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P157" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P158" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P159" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP156" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP157" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP158" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP159" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B13" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B13" style="font-size: 25px;margin: 2px;">주기사용</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-5" style="margin: 3px;font-size: 30px;">열림주기</small><small class="fs-2" id="P125M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P125S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP125" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-6" style="margin: 3px;font-size: 30px;">인터벌</small><small class="fs-2" id="P126M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P126S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div id="SP217-2"><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP126" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P141B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P141B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P141B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P141B2" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P141B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P141B3" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P141B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P141B4" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">시간설정3</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B12" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P164" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P165" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P166" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P167" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP164" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP165" title="풍속" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP166" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP167" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B14" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B14" style="font-size: 25px;margin: 2px;">주기사용</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-7" style="margin: 3px;font-size: 30px;">열림주기</small><small class="fs-2" id="P127M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P127S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP127" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10-8" style="margin: 3px;font-size: 30px;">인터벌</small><small class="fs-2" id="P128M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" id="P128S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">초</small></div>
+                        <div id="SP217-3"><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP128" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P208B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P208B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P208B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P208B2" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P208B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P208B3" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P208B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P208B4" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">시간설정4</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B2" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P10" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P11" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P12" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P13" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP10" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP11" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP12" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP13" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정온도</small><small class="fs-2" id="P117" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P118" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP117" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP118" min="0" max="2" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P252B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P252B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P252B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P252B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">온도설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B3" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P14" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P15" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P16" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P17" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP14" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP15" title="풍속" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP16" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP17" title="풍속" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정온도</small><small class="fs-2" id="P121" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P122" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP121" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP122" min="0" max="2" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P222B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P222B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P222B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P222B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">온도설정2</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B8" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P26" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P27" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P28" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P29" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP26" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP27" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP28" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP29" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정온도</small><small class="fs-2" id="P115" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P116" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP115" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP116" min="0" max="2" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P224B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P224B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P224B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P224B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">온도설정3</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="formCheck-4" style="font-size: 25px;margin: 2px;">선택</label></div>
+                        </div>
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P30" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P31" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P32" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P33" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP30" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP31" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP32" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP33" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정온도</small><small class="fs-2" id="P119" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P120" style="margin: 3px;font-size: 30px;">12</small><small class="fs-2" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP119" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP120" min="0" max="2" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P226B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">천창</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P226B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼1</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P226B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">커튼2</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 25px;"><input class="form-check-input" type="checkbox" id="P226B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P137B1" style="font-size: 20px;margin: 1px;">차광</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">온도설정4</span>
+                </div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-5">
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B10" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P160" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P161" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP160" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP161" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P235B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P235B1" style="font-size: 25px;margin: 2px;">온도</label></div>
+                            <div><small class="fs-2 d-inline" id="P236" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P237" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP236" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP237" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">유동팬설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B11" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P162" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P163" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP162" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP163" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P235B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P235B2" style="font-size: 25px;margin: 2px;">온도</label></div>
+                            <div><small class="fs-2 d-inline" id="P238" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P239" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP238" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP239" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">유동팬설정2</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO64T" name="DO64G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0T-1" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO64F" name="DO64G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO0F-1" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">유동팬시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P172" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P173" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP172" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP173" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B1" style="font-size: 25px;margin: 2px;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B2" style="font-size: 25px;margin: 2px;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B3" style="font-size: 25px;margin: 2px;">3구역</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">보광설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B2" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P174" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P175" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP174" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP175" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B4" style="font-size: 25px;margin: 2px;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B5" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B5" style="font-size: 25px;margin: 2px;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B6" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B6" style="font-size: 25px;margin: 2px;">3구역</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">보광설정2</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B3" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P176" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P177" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP176" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP177" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B7" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B7" style="font-size: 25px;margin: 2px;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B8" style="font-size: 25px;margin: 2px;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B9" style="font-size: 25px;margin: 2px;">3구역</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">보광설정3</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B4" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P178" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P179" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP178" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP179" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B10" style="font-size: 25px;margin: 2px;">1구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B11" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B11" style="font-size: 25px;margin: 2px;">2구역</label></div>
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P170B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P170B12" style="font-size: 25px;margin: 2px;">3구역</label></div>
+                        </div>
+                    </div><span class="ribbon" style="display: flex;">보광설정4</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO68T" name="DO68G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO68T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO68F" name="DO68G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO68F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">보광기1시작정지</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO69T" name="DO69G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO69T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO69F" name="DO69G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO69F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">보광기2시작정지</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO70T" name="DO70G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO70T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO70F" name="DO70G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO70F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">보광기3시작정지</span>
+                </div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-6">
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B12" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B12" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P164" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P165" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP164" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP165" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">환풍기설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B13" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P114B13" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P166" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P167" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP166" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP167" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">환풍기설정2</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO64T" name="DO64G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO64T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO64F" name="DO64G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO64F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">환풍기시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B1-1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P135" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P136" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP135" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP136" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">훈증기설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P114B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B2-1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P139" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P140" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP139" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP140" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">훈증기설정2</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO71T" name="DO71G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO71T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO71F" name="DO71G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO71F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">훈증기시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P113B8" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P113B8" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P204" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P205" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP204" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP205" title="풍속" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정값</small><small class="fs-2" id="P244" style="margin: 3px;font-size: 30px;">2000</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ppm</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P245" style="margin: 3px;font-size: 30px;">100</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ppm</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP244" min="0" max="2000" step="10" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP245" min="0" max="100" step="10" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">CO2설정1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P113B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P113B9" style="font-size: 25px;margin: 2px;">선택</label></div>
+                            <div class="d-flex justify-content-between"><small class="fs-2" id="P206" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2" id="P207" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP206" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP207" title="풍속" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">설정값</small><small class="fs-2" id="P246" style="margin: 3px;font-size: 30px;">2000</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ppm</small></div>
+                            <div><small class="fs-2" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2" id="P247" style="margin: 3px;font-size: 30px;">100</small><small class="fs-2" style="margin: 3px;font-size: 30px;">ppm</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP246" min="0" max="2000" step="10" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP247" min="0" max="100" step="10" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">CO2설정2</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO66T" name="DO66G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO66T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO66F" name="DO66G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO66F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">CO2발생기1시작정지</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO67T" name="DO67G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO67T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO67F" name="DO67G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO67F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">CO2발생기2시작정지</span>
+                </div>
+            </div>
+            <div class="tab-pane active overflow-y-auto" role="tabpanel" id="tab-7">
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex justify-content-between"><small id="A4" style="margin: 3px;font-size: 30px;">23</small><small style="margin: 3px;font-size: 30px;">시</small><small id="A5" style="margin: 3px;font-size: 30px;">59</small><small style="margin: 3px;font-size: 30px;">분</small><small id="A6" style="margin: 3px;font-size: 30px;">59</small><small style="margin: 3px;font-size: 30px;">초</small></div><span class="ribbon" style="display: flex;">현재시각</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex justify-content-between"><small style="margin: 3px;font-size: 30px;">실내온도</small>
+                        <div class="d-inline-flex flex-grow-0 justify-content-between"><small id="A117" style="margin: 3px;font-size: 30px;">13.6</small><small style="margin: 3px;font-size: 30px;">℃</small></div>
+                    </div>
+                    <div class="d-flex justify-content-between"><small style="margin: 3px;font-size: 30px;">실내습도</small>
+                        <div class="d-inline-flex flex-grow-0 justify-content-between"><small id="A118" style="margin: 3px;font-size: 30px;">99</small><small style="margin: 3px;font-size: 30px;">%</small></div>
+                    </div>
+                    <div class="d-flex justify-content-between"><small style="margin: 3px;font-size: 30px;">이산화탄소</small>
+                        <div class="d-inline-flex flex-grow-0 justify-content-between"><small id="A26" style="margin: 3px;font-size: 30px;">2500</small><small style="margin: 3px;font-size: 30px;">ppm</small></div>
+                    </div><span class="ribbon" style="display: flex;">실내환경</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex justify-content-between"><small id="A7" style="margin: 3px;font-size: 30px;">23</small><small style="margin: 3px;font-size: 30px;">시간</small><small id="A8" style="margin: 3px;font-size: 30px;">59</small><small style="margin: 3px;font-size: 30px;">분</small><small id="A9" style="margin: 3px;font-size: 30px;">59</small><small style="margin: 3px;font-size: 30px;">초</small></div><span class="ribbon" style="display: flex;">양액기가동시간</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;"><button class="btn btn-primary" id="BtnDownload" type="button" style="font-size: 30px;" onclick="btnDownload( )">&nbsp;설정치 전송</button></div>
+            </div>
+            <div class="tab-pane overflow-y-auto" role="tabpanel" id="tab-8">
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO32T" name="DO32G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO32T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO32F" name="DO32G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO32F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">에어포그시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;font-size: 30px;">
+                    <div class="d-flex flex-row" style="justify-content: space-between;">
+                        <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO33" name="DO33G" value="MANUAL" onclick="DoActionClick( this )"><label class="form-check-label" for="DO1-1" style="font-size: 27px;">기본</label></div>
+                        <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO34" name="DO33G" value="SCHEDULE" onclick="DoActionClick( this )"><label class="form-check-label" for="DO2-1" style="font-size: 27px;">예약</label></div>
+                    </div><span class="ribbon" style="display: flex;">에어포그운전모드</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;font-size: 30px;">
+                    <div class="d-flex flex-row" style="justify-content: space-between;">
+                        <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO12T" name="DO33G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO12T" style="font-size: 27px;">퇴수</label></div>
+                        <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P103B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P103B1" style="font-size: 25px;margin: 2px;">선택</label></div>
+                    </div><span class="ribbon" style="display: flex;">에어포그퇴수</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;font-size: 30px;">
+                    <div class="d-flex flex-row" style="justify-content: space-between;">
+                        <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P103B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P103B2" style="font-size: 25px;margin: 2px;">포그</label></div>
+                        <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P103B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P103B3" style="font-size: 25px;margin: 2px;">농약</label></div>
+                        <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P103B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P103B4" style="font-size: 25px;margin: 2px;">청소</label></div>
+                    </div><span class="ribbon" style="display: flex;">에어포그사용모드</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between"><small class="fs-2" id="P110" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2" id="P109" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2" style="margin: 3px;font-size: 30px;">부터</small><small class="fs-2" id="P107" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2" style="margin: 3px;font-size: 30px;">회</small></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP110" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP109" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP107" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">에어포그 시작시간 및 회수</span>
+                </div>
+                <div class="d-flex flex-row displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-right: 10px;*/"><input class="form-check-input" type="radio" id="DO11T" name="DO11G" value="START" onclick="DoActionClick( this )"><label class="form-check-label" for="DO11T" style="font-size: 27px;">시작</label></div>
+                    <div class="form-check" style="color: rgb(0,0,150);font-size: 30px;position: relative;display: inline-flex;/*margin-left: 15px;*/"><input class="form-check-input" type="radio" id="DO11F" name="DO11G" value="STOP" onclick="DoActionClick( this )"><label class="form-check-label" for="DO11F" style="font-size: 27px;">정지</label></div><span class="ribbon" style="display: flex;">원수펌프시작정지</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B1" style="font-size: 25px;margin: 2px;">선택</label></div><small class="fs-2 d-inline" id="P104M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2 d-inline" id="P104S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP104" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">1구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B2" style="font-size: 25px;margin: 2px;">선택</label></div><small class="fs-2 d-inline" id="P105M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2 d-inline" id="P105S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP105" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">2구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P99B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P99B3" style="font-size: 25px;margin: 2px;">선택</label></div><small class="fs-2 d-inline" id="P106M" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">분</small><small class="fs-2 d-inline" id="P106S" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">초</small>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP106" min="0" max="3599" step="1" oninput="sliderfunc(this)"></div>
+                        <div></div>
+                        <div></div>
+                    </div><span class="ribbon" style="display: flex;">3구역</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B9" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B9" style="font-size: 25px;margin: 2px;">시간</label></div><small class="fs-2 d-inline" id="P210" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2 d-inline" id="P211" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">시</small>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP210" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP211" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P100B3" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P100B3" style="font-size: 25px;margin: 2px;">온도</label></div>
+                            <div><small class="fs-2 d-inline" id="P192" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P193" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP192" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP193" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P100B1" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P100B1" style="font-size: 25px;margin: 2px;">습도</label></div>
+                            <div><small class="fs-2 d-inline" id="P188" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">%</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P189" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">%</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP188" min="0" max="99" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP189" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">온습도제어1</span>
+                </div>
+                <div class="d-flex flex-column displayBoundary" style="width: 90vw;padding: initial;padding-bottom: 10px;padding-right: 10px;padding-top: 10px;padding-left: 10px;/*max-width: 220px;*/height: auto;margin-left: 10px;margin-bottom: 25px;justify-content: space-between;margin-top: 15px;">
+                    <div class="d-flex flex-column">
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P169B10" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P169B10" style="font-size: 25px;margin: 2px;">시간</label></div><small class="fs-2 d-inline" id="P212" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">시</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">~</small><small class="fs-2 d-inline" id="P213" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">시</small>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP212" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP213" min="0" max="23" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P100B4" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P100B4" style="font-size: 25px;margin: 2px;">온도</label></div>
+                            <div><small class="fs-2 d-inline" id="P194" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P195" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">℃</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP194" min="0" max="59" step="1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP195" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                        <div class="text-nowrap d-flex flex-shrink-1 justify-content-between align-items-center">
+                            <div class="form-check d-flex align-items-center" style="width: auto;height: auto;position: relative;display: inline-flex;color: rgb(0,0,150);font-size: 30px;"><input class="form-check-input" type="checkbox" id="P100B2" style="color: rgb(0,0,150);font-weight: bold;border-width: 2px;border-style: solid;"><label class="form-check-label" for="P100B2" style="font-size: 25px;margin: 2px;">습도</label></div>
+                            <div><small class="fs-2 d-inline" id="P190" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">%</small></div>
+                            <div><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">편차</small><small class="fs-2 d-inline" id="P191" style="margin: 3px;font-size: 30px;">11</small><small class="fs-2 d-inline" style="margin: 3px;font-size: 30px;">%</small></div>
+                        </div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP190" min="0" max="99" step="0.1" oninput="sliderfunc(this)"></div>
+                        <div><input class="form-range" type="range" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" id="SP191" min="0" max="5" step="1" oninput="sliderfunc(this)"></div>
+                    </div><span class="ribbon" style="display: flex;">온습도제어2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+       <div class="toast fade text-center bg-info position-fixed top-50 start-50 translate-middle hide" role="alert" data-bs-delay="2500" id="toast-1" style="margin: auto;font-size: 30px;">
+        <div class="toast-body" role="alert" style="font-size: 30px;">
+            <p class="fs-6 fw-semibold" id="ToastMsg" style="font-size: xx-large;color: var(--bs-body-bg);text-align: center;">This is a Toast message</p>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function(el) {
+               el.addEventListener('focus', function(e) {
+               e.target.blur();
+               });
+        });
+    
+    </script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    
+    <script type="text/javascript" th:inline="javascript">
+        let sockwtInfo = [[${wsuri}]];
+        let aiinform = [[${aiInform}]];
+        let parmvalues = [[${parmValues}]];
+        let parminform = [[${parmInform}]];
+        let doinform = [[${doInform}]];
+        let diinform = [[${diInform}]];
+    </script>
+    
+    <script type="text/javascript" src="js/new-mobile-websocket.js"></script>   
+
+
+</body>
+
+</html>

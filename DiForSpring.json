@@ -1,0 +1,105 @@
+{
+	"informs" :[
+  
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "관수펌프",
+    "UnitName": "N2",
+    "InstanceNo": 0,
+    "OnMsg": "가동중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "관수펌프트립",
+    "UnitName": "NE",
+    "InstanceNo": 1,
+    "OnMsg": "트립",
+    "OffMsg": "정상"
+  },
+ 
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간1",
+    "UnitName": "NE",
+    "InstanceNo": 16,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간2",
+    "UnitName": "NE",
+    "InstanceNo": 17,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간3",
+    "UnitName": "NE",
+    "InstanceNo": 18,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간4",
+    "UnitName": "NE",
+    "InstanceNo": 19,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간5",
+    "UnitName": "NE",
+    "InstanceNo": 20,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "관수및양액공급",
+    "TagName": "구간6",
+    "UnitName": "NE",
+    "InstanceNo": 21,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "에어포그구역",
+    "TagName": "구간1",
+    "UnitName": "NE",
+    "InstanceNo": 32,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "에어포그구역",
+    "TagName": "구간2",
+    "UnitName": "NE",
+    "InstanceNo": 33,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  },
+  {
+    "TagCategory": "DI",
+    "GroupName": "에어포그구역",
+    "TagName": "구간3",
+    "UnitName": "NE",
+    "InstanceNo": 34,
+    "OnMsg": "공급중",
+    "OffMsg": "정지"
+  }
+]
+}
