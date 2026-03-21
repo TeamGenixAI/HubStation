@@ -172,14 +172,13 @@ def di_inner_html(item):
     off_msg = str(item.get('OffMsg') or '')
 
     return (
-        f'<label id="DI{n}" style="font-size:1.8rem;padding:0.1rem 0.3rem;'
-        f'color:gray;font-weight:bold;">{off_msg}</label>'
+        f'<small id="DI{n}" style="margin:0.6rem;font-size:2rem;">{off_msg}</small>'
     )
 
 
 def ai_inner_html(item):
     """AI 상태 label HTML (ribbon 제외)
-    ID = AI{InstanceNo}, 초기 내용 = OffMsg만
+    ID = A{InstanceNo}, 초기 내용 = OffMsg만
     TagName은 앞에 <small>, UnitName은 뒤에 <small>로 표시
     """
     n        = item['InstanceNo']
@@ -193,7 +192,7 @@ def ai_inner_html(item):
     return (
         f'<div class="d-inline-flex align-items-center" style="margin:0.2rem;">'
         f'{tag_html}'
-        f'<label id="AI{n}" style="font-size:1.8rem;font-weight:bold;">{off_msg}</label>'
+        f'<label id="A{n}" style="font-size:1.8rem;font-weight:bold;">{off_msg}</label>'
         f'{unit_html}'
         f'</div>'
     )
@@ -228,15 +227,18 @@ def build_status_boxes(di_items, ai_items):
         gn = it.get('GroupName') or ''
         di_groups.setdefault(gn, []).append(it)
     for gn, group_items in di_groups.items():
-        boxes.append((make_status_group_box(gn, group_items, 'di'), False))
+        boxes.append((make_status_group_box(gn, group_items, 'di'), False, False))
 
     # AI: GroupName별로 묶기
+    # '실내습도'는 row break 추가 → 양액기/교반기/에어포그 가동시간 row와 분리
+    ROW_BREAK_BEFORE = {'실내습도'}
     ai_groups = OrderedDict()
     for it in ai_items:
         gn = it.get('GroupName') or ''
         ai_groups.setdefault(gn, []).append(it)
     for gn, group_items in ai_groups.items():
-        boxes.append((make_status_group_box(gn, group_items, 'ai'), False))
+        row_break = gn in ROW_BREAK_BEFORE
+        boxes.append((make_status_group_box(gn, group_items, 'ai'), row_break, False))
 
     return boxes
 
@@ -257,26 +259,50 @@ def make_group_box(group_name, items, source):
         has_dow = any((it.get('UnitName') or '').upper() == 'DOW' for it in items)
         wrap_cls = 'flex-nowrap' if has_dow else 'flex-wrap'
         style    = 'width:auto;' if has_dow else 'max-width:15rem;'
-        return (
+        html = (
             f'<div class="d-xxl-flex justify-content-between {wrap_cls} tagBoxDisplay" '
             f'style="{style}">'
             f'{inner}{ribbon}</div>'
         )
+        return html, False
     else:
-        parts = []
+        # 빈 행(_inner_spacer) 기준으로 그룹 분리
+        groups = []
+        current = []
         for it in items:
             if it.get('_inner_spacer'):
-                parts.append('<div style="width:3rem;display:inline-block;"></div>')
-            elif str(it.get('OnMsg', '')).lower() == 'bitbit':
-                parts.append(checkbox_inner_html(it))
+                if current:
+                    groups.append(current)
+                    current = []
             else:
-                parts.append(number_inner_html(it))
-        inner = ''.join(parts)
-        return (
-            '<div class="d-flex align-items-center flex-wrap tagBoxDisplay" '
-            'style="width:auto;padding-left:10px;padding-right:0px;">'
-            f'{inner}{ribbon}</div>'
-        )
+                if str(it.get('OnMsg', '')).lower() == 'bitbit':
+                    current.append(checkbox_inner_html(it))
+                else:
+                    current.append(number_inner_html(it))
+        if current:
+            groups.append(current)
+
+        if len(groups) > 1:
+            # 빈 행으로 구분된 그룹 2개 이상 → 각 그룹을 inline-flex로 묶고 space-between
+            # → width:100% 단독 row 차지
+            group_html = ''.join(
+                f'<div class="d-inline-flex align-items-center">{"".join(g)}</div>'
+                for g in groups
+            )
+            html = (
+                '<div class="d-flex align-items-center flex-wrap tagBoxDisplay full-row" '
+                'style="width:100%;padding-left:10px;padding-right:0px;justify-content:space-between;">'
+                f'{group_html}{ribbon}</div>'
+            )
+            return html, True   # full_row=True → 단독 row
+        else:
+            inner = ''.join(groups[0]) if groups else ''
+            html = (
+                '<div class="d-flex align-items-center flex-wrap tagBoxDisplay" '
+                'style="width:auto;padding-left:10px;padding-right:0px;">'
+                f'{inner}{ribbon}</div>'
+            )
+            return html, False
 
 
 # ─────────────────────────────────────────────
@@ -288,7 +314,7 @@ def build_tab_boxes(do_items, parm_items):
     parm_items에 spacer dict가 포함될 수 있음.
     반환: list of (html_str, row_break_before)
     """
-    boxes = []  # (html, row_break_before)
+    boxes = []  # (html, row_break_before, full_row)
 
     # DO: GroupName별로 묶기 (순서 유지)
     do_groups = OrderedDict()
@@ -296,7 +322,8 @@ def build_tab_boxes(do_items, parm_items):
         gn = it.get('GroupName') or ''
         do_groups.setdefault(gn, []).append(it)
     for gn, group_items in do_groups.items():
-        boxes.append((make_group_box(gn, group_items, 'do'), False))
+        box_html, is_full = make_group_box(gn, group_items, 'do')
+        boxes.append((box_html, is_full, is_full))
 
     # Parm: 순서대로 처리 (spacer 포함)
     current_group = None
@@ -309,7 +336,8 @@ def build_tab_boxes(do_items, parm_items):
                 current_items.append({'_inner_spacer': True})
             else:  # row_break
                 if current_group is not None:
-                    boxes.append((make_group_box(current_group, current_items, 'parm'), pending_row_break))
+                    box_html, is_full = make_group_box(current_group, current_items, 'parm')
+                    boxes.append((box_html, pending_row_break or is_full, is_full))
                     pending_row_break = False
                     current_group = None
                     current_items = []
@@ -318,14 +346,16 @@ def build_tab_boxes(do_items, parm_items):
             gn = it.get('GroupName') or ''
             if gn != current_group:
                 if current_group is not None:
-                    boxes.append((make_group_box(current_group, current_items, 'parm'), pending_row_break))
+                    box_html, is_full = make_group_box(current_group, current_items, 'parm')
+                    boxes.append((box_html, pending_row_break or is_full, is_full))
                     pending_row_break = False
                 current_group = gn
                 current_items = []
             current_items.append(it)
 
     if current_group is not None:
-        boxes.append((make_group_box(current_group, current_items, 'parm'), pending_row_break))
+        box_html, is_full = make_group_box(current_group, current_items, 'parm')
+        boxes.append((box_html, pending_row_break or is_full, is_full))
 
     return boxes
 
@@ -333,8 +363,9 @@ def build_tab_boxes(do_items, parm_items):
 def boxes_to_rows_html(boxes, indent='                ', min_rows=3, min_per_row=2):
     """
     박스 리스트 → d-flex flex-row 행 HTML
-    boxes: list of (html_str, row_break_before)
-    - row_break_before=True 이면 해당 박스 앞에서 강제 줄바꿈
+    boxes: list of (html_str, row_break_before, full_row)
+    - row_break_before=True : 해당 박스 앞에서 강제 줄바꿈
+    - full_row=True         : 단독 row 차지 (앞뒤 모두 줄바꿈, width:100% 박스)
     - 나머지는 기존 알고리즘(items_per_row) 적용
     """
     if not boxes:
@@ -359,11 +390,11 @@ def boxes_to_rows_html(boxes, indent='                ', min_rows=3, min_per_row
         )
         current_row = []
 
-    for box_html, row_break in boxes:
-        if row_break and current_row:
+    for box_html, row_break, full_row in boxes:
+        if (row_break or full_row) and current_row:
             flush_row()
         current_row.append(box_html)
-        if len(current_row) >= items_per_row:
+        if len(current_row) >= items_per_row or full_row:
             flush_row()
 
     flush_row()
@@ -373,7 +404,7 @@ def boxes_to_rows_html(boxes, indent='                ', min_rows=3, min_per_row
 # ─────────────────────────────────────────────
 # 탭 네비게이션 + 탭 패널 HTML 생성
 # ─────────────────────────────────────────────
-def build_tabs_html(tab_order, do_by_tab, parm_by_tab, status_boxes=None):
+def build_tabs_html(tab_order, do_by_tab, parm_by_tab, status_boxes=None, status_bottom_html=''):
     nav_items = []
     pane_items = []
 
@@ -395,7 +426,10 @@ def build_tabs_html(tab_order, do_by_tab, parm_by_tab, status_boxes=None):
             do_items   = do_by_tab.get(tab_name, [])
             parm_items = parm_by_tab.get(tab_name, [])
             boxes      = build_tab_boxes(do_items, parm_items)
-        rows_html  = boxes_to_rows_html(boxes)
+        # 시간 탭: 박스가 넓어 1280px에서 4개 배치 시 wrapping → 3개/행으로 강제
+        rows_html = boxes_to_rows_html(boxes, min_rows=4 if tab_name == '시간' else 3)
+        if tab_name == '상태' and status_bottom_html:
+            rows_html += status_bottom_html
 
         pane_items.append(
             f'            <div class="tab-pane {active}" role="tabpanel" '
@@ -443,6 +477,54 @@ HTML_TEMPLATE = """\
         </div>
     </div>
 
+      <div class="toast fade text-center bg-info position-fixed top-50 start-50 translate-middle hide" role="alert"
+        id="toast-1" data-bs-delay="2500" style="margin:auto;font-size:30px;">
+        <div class="toast-body" role="alert" style="font-size:30px;">
+            <p class="fs-6 fw-semibold" id="ToastMsg"
+                style="font-size:xx-large;color:var(--bs-body-bg);text-align:center;">Toast message</p>
+        </div>
+    </div>
+    <script>
+        let lastTap = 0;
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('touchend', function (e) {
+            // 터치 이벤트가 실행된 시간
+            const now = new Date().getTime();
+            if (now - lastTap < 300) { // 300ms 이내에 두 번 터치
+                toggleFullscreen();
+            }
+            lastTap = now;
+        });
+
+        // PC 환경(마우스 더블클릭)도 지원하고 싶다면 아래 추가
+        document.addEventListener('dblclick', toggleFullscreen);
+    </script>
+    <script>
+        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function (el) {
+            el.addEventListener('focus', function (e) {
+                e.target.blur();
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript" th:inline="javascript">
+        let sockwtInfo = [[${ wsuri }]];
+        let aiinform = [[${ aiInform }]];
+        let parmvalues = [[${ parmValues }]];
+        let parminform = [[${ parmInform }]];
+        let doinform = [[${ doInform }]];
+        let diinform = [[${ diInform }]];
+    </script>
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="js/merged-websocket.js"></script>
@@ -483,11 +565,25 @@ def main():
         if cat:
             parm_by_tab.setdefault(cat, []).append(row)
 
-    # ── 상태 탭 박스 생성 ──
-    status_boxes = build_status_boxes(di_data, ai_data)
+    # ── 상태 탭 박스 생성 (현재시각 제외 → 하단 고정 행으로 분리) ──
+    jigak_items  = [r for r in ai_data if r.get('GroupName') == '현재시각']
+    ai_data_main = [r for r in ai_data if r.get('GroupName') != '현재시각']
+    status_boxes = build_status_boxes(di_data, ai_data_main)
+
+    # 하단 고정 행: 현재시각(좌) + BtnDownload(우)
+    jigak_box = make_status_group_box('현재시각', jigak_items, 'ai') if jigak_items else ''
+    ind = '                '
+    status_bottom_html = (
+        f'{ind}<div class="d-flex flex-row justify-content-between align-items-center flex-wrap" style="width:100%;">\n'
+        f'{ind}    {jigak_box}\n'
+        f'{ind}    <div class="tagDisplay110" style="width:auto;">'
+        f'<button class="btn btn-primary" id="BtnDownload" style="font-size:30px;" '
+        f'type="button" onclick="btnDownload()">제어기로 설정치 쓰기</button></div>\n'
+        f'{ind}</div>\n'
+    )
 
     # ── HTML 생성 ──
-    nav_html, pane_html = build_tabs_html(tab_order, do_by_tab, parm_by_tab, status_boxes)
+    nav_html, pane_html = build_tabs_html(tab_order, do_by_tab, parm_by_tab, status_boxes, status_bottom_html)
 
     html = HTML_TEMPLATE.replace('{NAV_ITEMS}',  nav_html)
     html = html.replace('{PANE_ITEMS}', pane_html)

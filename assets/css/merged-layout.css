@@ -246,9 +246,22 @@ body>div>div {
         align-items: flex-start !important;
     }
 
-    /* 카드 내부 행 간격 */
+    /* 카드 내부 행 간격: row방향 카드에서 첫 item 위로 치우침 방지 → 0 유지
+       (column방향 full-row 카드는 row-gap으로 간격 처리) */
     .tagBoxDisplay>*+* {
-        margin-top: 0.8rem;
+        margin-top: 0;
+    }
+
+    /* 상태 탭 모바일: 3개 이상 요소 카드 → 좌우 space-between
+       :has(> :nth-child(3):not(.ribbon)) = 3번째 직계 자식이 ribbon이 아닌 경우 (= 실제 요소 3개 이상)
+       specificity (1,4,0) — full-row, 단순 2개 카드 제외 */
+    #tab-8 .tagBoxDisplay:not(.full-row):has(> :nth-child(3):not(.ribbon)) {
+        justify-content: space-between !important;
+    }
+
+    /* 관수펌프: 요소 2개지만 space-between 적용 (DI0 ID로 특정) */
+    #tab-8 .tagBoxDisplay:has(#DI0) {
+        justify-content: space-between !important;
     }
 
     /* ② 체크박스: 왼쪽 정렬 강화 */
@@ -328,12 +341,37 @@ body>div>div {
         flex-wrap: nowrap !important;
     }
 
-    /* ① 라디오 버튼: 1줄 고정 (줄바꿈 없음) */
+    /* full-row tagBoxDisplay (내부 그룹형): 모바일에서 그룹을 수직 스택
+       specificity (0,3,0) — inline style justify-content:space-between 무력화 */
+    .tab-pane .tagBoxDisplay.full-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        row-gap: 0.6rem;
+    }
+
+    /* full-row 내부 각 그룹: 가로 배치 유지 + 줄바꿈 허용
+       specificity (0,4,0) */
+    .tab-pane .tagBoxDisplay.full-row > .d-inline-flex {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        width: auto !important;
+        align-items: center !important;
+    }
+
+    /* ① 라디오 버튼: 1줄 고정 (줄바꿈 없음) — 단순 라디오 tagBoxDisplay */
     .tagBoxDisplay:has(input[type="radio"]) {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         align-items: center !important;
+    }
+
+    /* ① 예외: 내부 행(.d-flex.flex-row)이 있는 복합 tagBoxDisplay(유동팬/CO2 등)
+       → nowrap 해제, 내부 행이 각각 100% 폭으로 줄바꿈되어 space-between 동작 */
+    .tagBoxDisplay:has(input[type="radio"]):has(>.d-flex.flex-row) {
+        flex-wrap: wrap !important;
+        align-items: stretch !important;
     }
 
     .tagBoxDisplay:has(input[type="radio"])>.form-check {
